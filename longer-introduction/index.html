@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Before Midnight · Longer introduction</title>
+<meta name="description" content="Friday, 14 May 1948. At midnight British rule in Palestine ends. Before sunset you must agree on the words that create a state. A seven-minute introduction to the Reacting to the Past game Before Midnight.">
+<meta name="theme-color" content="#dccfaa">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23882a2c'/%3E%3Cpath d='M16 6v10' stroke='%23f0e6d0' stroke-width='3'/%3E%3Cpath d='M16 16V9' stroke='%23f0e6d0' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preload" href="shared/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="shared/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/engine.css">
+<style>
+/* THEME: British Mandate officialdom, 1948.
+   Buff government paper whose tint moves from paper to paper (letter, map, draft), Post Office red as the one accent,
+   Caslon for text, a Johnston/Gill relative for labels, a typewriter for every document. The last section goes dark. */
+@property --hue { syntax: '<number>'; inherits: true; initial-value: 42; }
+@property --sat { syntax: '<percentage>'; inherits: true; initial-value: 34%; }
+:root {
+  --hue: 42; --sat: 34%; --rail: 46px;
+  --ground: hsl(var(--hue) var(--sat) 84%);
+  --paper: hsl(var(--hue) calc(var(--sat) + 6%) 91%);
+  --ink: hsl(var(--hue) 30% 10%);
+  --dim: hsl(var(--hue) 16% 29%);
+  --rule: hsl(var(--hue) 24% 30% / .5);
+  --accent: hsl(357 64% 34%);
+  --f-display: 'Libre Caslon Display', 'Libre Caslon Text', 'Big Caslon', Georgia, serif;
+  --f-body: 'Libre Caslon Text', 'Big Caslon', Georgia, serif;
+  --f-caps: 'Cabin', 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+  --f-type: 'Courier Prime', 'Courier New', monospace;
+  --plate-filter: grayscale(1) contrast(1.2) brightness(1.04);
+  transition: --hue 1.4s ease, --sat 1.4s ease;
+}
+:root.night {
+  --ground: hsl(224 32% 8%);
+  --paper: hsl(224 24% 13%);
+  --ink: hsl(40 30% 91%);
+  --dim: hsl(40 12% 68%);
+  --rule: hsl(40 20% 80% / .28);
+  --accent: hsl(357 68% 63%);
+}
+body { font-size: clamp(1rem, .93rem + .3vw, 1.14rem); line-height: 1.66; }
+/* a little paper tooth over everything */
+body::before { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: .055; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+
+/* the trilingual strip that ran across every Mandate stamp, coin and banknote */
+.tri { display: flex; gap: 1.1rem; align-items: baseline; flex-wrap: wrap; font-family: var(--f-caps); font-weight: 600; letter-spacing: .2em; text-transform: uppercase; font-size: .78rem; color: var(--accent); padding-bottom: .7rem; border-bottom: 3px double var(--accent); }
+.tri span[lang] { letter-spacing: 0; text-transform: none; font-weight: 400; }
+.tri span[lang=ar] { font-family: 'Amiri', 'Geeza Pro', serif; font-size: 1.25rem; }
+.tri span[lang=he] { font-family: 'Frank Ruhl Libre', 'Times New Roman', serif; font-size: 1.1rem; font-weight: 500; }
+.tri .sep { opacity: .5; }
+
+/* cold open */
+.hero-in { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(1.5rem, 4vw, 4.5rem); align-items: center; }
+.hero .when { margin-top: 1.4rem; font-family: var(--f-type); font-size: 1rem; letter-spacing: .02em; }
+.hero h1 { margin-top: .6rem; font-size: clamp(3.2rem, 1rem + 8vw, 7.4rem); line-height: .9; letter-spacing: -.01em; }
+.hero .lede { margin-top: 1.8rem; max-width: 33rem; font-size: 1.14em; }
+.hero .lede + .lede { margin-top: .9rem; }
+.hero .yours { margin-top: 1.6rem; font-family: var(--f-display); font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.7rem); line-height: 1.1; color: var(--accent); }
+.hero .cn { margin-top: 1.8rem; max-width: 33rem; font-size: .84em; color: var(--dim); }
+.hero .down { margin-top: 1.4rem; display: inline-block; font-family: var(--f-caps); text-transform: uppercase; letter-spacing: .16em; font-weight: 600; font-size: .86rem; text-decoration: none; padding: .7rem 1.2rem; border: 2px solid var(--accent); transition: background .25s, color .25s; }
+.hero .down:hover, .hero .down:focus-visible { background: var(--accent); color: var(--paper); }
+.objs { position: relative; justify-self: center; width: min(100%, 24rem); }
+.objs img { height: auto; }
+.objs .stamp { display: block; width: 62%; margin-left: 30%; transform: rotate(3deg); box-shadow: 3px 4px 0 hsl(var(--hue) 24% 30% / .25); }
+.objs .note { display: block; width: 92%; margin-top: -14%; transform: rotate(-4deg); box-shadow: 3px 4px 0 hsl(var(--hue) 24% 30% / .25); position: relative; }
+.objs figcaption { margin-top: 1.4rem; font-family: var(--f-caps); letter-spacing: .05em; font-size: .72rem; line-height: 1.45; color: var(--dim); }
+@media (max-width: 820px) { .hero-in { grid-template-columns: minmax(0, 1fr); } .objs { width: min(100%, 17rem); } }
+
+.opener .num { font-family: var(--f-caps); font-weight: 600; text-transform: uppercase; letter-spacing: .2em; font-size: .86rem; color: var(--accent); }
+.opener h2 { font-size: clamp(3rem, 1.8rem + 4.4vw, 5.6rem); line-height: .94; }
+.opener .where { font-family: var(--f-type); font-size: .95rem; margin-top: .4rem; }
+.opener .after { margin-top: 1.2rem; max-width: 31rem; }
+
+/* a phrase quoted from a document: set in typewriter, as on the page it comes from */
+.phrase { font-family: var(--f-type); font-weight: 700; font-size: clamp(1.25rem, 1.05rem + .9vw, 1.75rem); line-height: 1.3; padding: .5rem 0 .5rem 1rem; border-left: 4px solid var(--accent); }
+.beat .big { letter-spacing: -.005em; }
+.beat .yr { font-family: var(--f-type); font-size: .95rem; color: var(--accent); font-weight: 700; }
+.inter .hh { font-family: var(--f-display); font-size: clamp(2.4rem, 1.5rem + 3.6vw, 4.6rem); line-height: 1; }
+.inter .lab { margin-bottom: .4rem; }
+
+/* section III: the annex table */
+.annex { width: 100%; border-collapse: collapse; font-family: var(--f-type); font-size: .88rem; margin-top: .2rem; }
+.annex caption { text-align: left; font-family: var(--f-caps); text-transform: uppercase; letter-spacing: .14em; font-size: .7rem; font-weight: 600; color: var(--accent); padding-bottom: .5rem; }
+.annex th, .annex td { text-align: right; padding: .5rem .45rem; border-top: 1px solid var(--rule); white-space: nowrap; }
+.annex thead th { border-top: 0; border-bottom: 2px solid var(--ink); font-family: var(--f-caps); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; }
+.annex tbody th { text-align: left; font-weight: 700; white-space: nowrap; }
+@media (max-width: 480px) { .annex { font-size: .74rem; } .annex th, .annex td { padding: .5rem .25rem; } .annex thead th { font-size: .58rem; } }
+.annex tfoot td { border: 0; text-align: left; font-family: var(--f-body); font-size: .74rem; color: var(--dim); white-space: normal; padding: .7rem 0 0; line-height: 1.45; }
+.sw { display: inline-block; width: .8em; height: .8em; margin-right: .5em; border: 1px solid var(--ink); vertical-align: -.05em; }
+.sw.j { background: hsl(185 40% 52%); } .sw.a { background: hsl(33 82% 68%); } .sw.l { background: #fff; }
+
+/* section IV: the typed draft, as the stage, and the options, as the column */
+.sheet { width: min(94%, 33rem); padding: 3.1rem 2rem 3rem; background: hsl(48 36% 96.5%); color: #1d1b17; font-family: var(--f-type); font-size: clamp(.72rem, .6rem + .38vw, .9rem); line-height: 1.72; box-shadow: 0 1px 0 rgba(40,30,10,.12), 0 18px 40px -22px rgba(40,30,10,.55); }
+.sheet .hd { text-align: center; font-weight: 700; letter-spacing: .08em; }
+.sheet .sub { text-align: center; font-size: .9em; margin-bottom: 1.2rem; }
+.sheet p + p { margin-top: .95em; }
+.sheet .stamp { position: absolute; top: .9rem; right: 1.2rem; transform: rotate(4deg); font-family: var(--f-caps); font-weight: 600; font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: hsl(357 64% 34%); border: 2px solid hsl(357 64% 34%); padding: .15rem .45rem; opacity: .8; }
+.sheet .blank { display: inline-block; min-width: 7.5em; text-align: center; border-bottom: 2px solid #1d1b17; font-family: var(--f-caps); font-weight: 600; font-size: .76em; letter-spacing: .14em; text-transform: uppercase; color: hsl(357 64% 34%); line-height: 1.55; padding: 0 .55em; margin: 0 .1em; transition: background .5s, box-shadow .5s, border-color .5s; }
+.sheet .blank.seen { border-bottom-color: hsl(357 64% 34%); }
+.sheet .blank.now { background: hsl(357 64% 34% / .12); box-shadow: 0 0 0 2px hsl(357 64% 34%); }
+.sheet .hl { transition: background .6s; }
+.sheet .hl.now { background: hsl(50 95% 70% / .6); }
+
+.kick { font-family: var(--f-caps); text-transform: uppercase; letter-spacing: .16em; font-size: .76rem; font-weight: 600; color: var(--accent); }
+.opts { display: flex; flex-direction: column; gap: 1.05rem; margin-top: .2rem; }
+.opts .o { font-family: var(--f-type); font-weight: 700; font-size: .98rem; line-height: 1.35; padding-left: .9rem; border-left: 3px solid var(--accent); }
+.opts .c { margin-top: .25rem; font-size: .94em; line-height: 1.5; padding-left: calc(.9rem + 3px); }
+.who { font-size: .92em; line-height: 1.5; color: var(--dim); border-top: 1px solid var(--rule); padding-top: .8rem; }
+.who b { font-family: var(--f-caps); text-transform: uppercase; letter-spacing: .12em; font-size: .7rem; color: var(--accent); font-weight: 600; margin-right: .5em; }
+
+/* section V: the table */
+.tablesec { padding-block: 16vh 14vh; }
+.tablesec .in { max-width: 70rem; margin-inline: auto; }
+.tablesec h2 { font-size: clamp(3rem, 1.8rem + 4.4vw, 5.6rem); line-height: .94; margin-top: .4rem; }
+.tablesec .intro { margin-top: 1.4rem; max-width: 36rem; font-size: 1.08em; }
+.cast { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.1rem; margin-top: 2.4rem; }
+@media (max-width: 1000px) { .cast { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .cast { grid-template-columns: minmax(0, 1fr); } }
+.party { background: var(--paper); border: 1px solid var(--rule); padding: 1.1rem 1.2rem 1.3rem; display: flex; flex-direction: column; gap: .75rem; box-shadow: 3px 4px 0 hsl(var(--hue) 24% 30% / .18); }
+.party h3 { font-family: var(--f-caps); font-weight: 600; text-transform: uppercase; letter-spacing: .16em; font-size: .8rem; color: var(--accent); border-bottom: 3px double var(--accent); padding-bottom: .55rem; }
+.party li { font-family: var(--f-type); font-size: .84rem; line-height: 1.4; padding: .16rem 0; }
+.party li b { font-weight: 700; }
+.party p { font-size: .9em; line-height: 1.5; }
+.rules { margin-top: 2.4rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.2rem, 4vw, 3.5rem); max-width: 62rem; }
+@media (max-width: 760px) { .rules { grid-template-columns: minmax(0, 1fr); } }
+.rules .lab { margin-bottom: .35rem; }
+
+/* the closing address, after dark */
+.midnight { min-height: 100svh; display: grid; align-items: center; padding-block: 18vh 14vh; }
+.close { max-width: 46rem; margin-inline: auto; display: flex; flex-direction: column; gap: 1.7rem; }
+.close p { font-family: var(--f-display); font-size: clamp(1.75rem, 1.1rem + 2.7vw, 3.3rem); line-height: 1.12; text-wrap: balance; }
+.close .quiet { color: var(--dim); }
+.close .last { color: var(--accent); }
+.close .go { margin-top: 1.4rem; font-family: var(--f-caps); text-transform: uppercase; letter-spacing: .2em; font-weight: 600; font-size: .84rem; color: var(--dim); }
+</style>
+<noscript><style>.plate:first-of-type { opacity: .94; }</style></noscript>
+</head>
+<body id="top">
+<a class="skip" href="#letter">Skip to the text</a>
+
+<div class="rail gut">
+  <span class="yr" id="railYr">1948</span>
+  <span class="ck">Friday 14 May 1948 · sixteen hours to midnight</span>
+  <div class="trk" aria-hidden="true"><span>The four blanks</span><i></i><i></i><i></i><i></i></div>
+  <div class="bar" id="railBar"></div>
+</div>
+
+<main>
+
+<!-- 0. COLD OPEN -->
+<header class="hero gut" data-hue="42" data-yr="1948">
+  <div class="wrap">
+    <div class="tri"><span>Palestine</span><span class="sep">·</span><span lang="ar" dir="rtl">فلسطين</span><span class="sep">·</span><span lang="he" dir="rtl">פלשתינה (א״י)</span></div>
+    <div class="hero-in">
+      <div>
+        <p class="when">Friday, 14 May 1948. 8:00 a.m.</p>
+        <h1>Sixteen hours.</h1>
+        <p class="lede">At midnight tonight, thirty years of British rule in Palestine come to an end. The British High Commissioner leaves Jerusalem this morning. Nobody has been appointed to replace him.</p>
+        <p class="lede">You sit with the cabinet of a state that does not exist yet. Before sunset you have to agree on the words that will create it.</p>
+        <p class="yours">What comes next is up to you.</p>
+        <p class="cn">Read this before we play. It takes about seven minutes. Content note: this page mentions the Holocaust, and a war in which civilians on both sides were killed and driven from their homes.</p>
+        <a class="down" href="#letter">Begin</a>
+      </div>
+      <figure class="objs">
+        <img class="stamp" src="assets/stamp_1927.jpg" width="900" height="1060" alt="A red four-mil postage stamp showing the Dome of the Rock, lettered Palestine in English, Hebrew and Arabic.">
+        <img class="note" src="assets/pound_1939.jpg" width="1100" height="590" alt="A green one-pound note of the Palestine Currency Board, 1939, printed in English, Arabic and Hebrew.">
+        <figcaption>A four-mil stamp of 1927 and a Palestine pound of 1939. Under British rule every stamp, coin and banknote carried three languages: English, Arabic and Hebrew.</figcaption>
+      </figure>
+    </div>
+  </div>
+</header>
+
+<!-- I. THE FIRST PAPER: A LETTER -->
+<section class="scene split" id="letter" data-hue="42">
+  <div class="stage">
+    <img class="plate contain" data-id="letter" data-cap="Arthur Balfour to Lord Rothschild, 2 November 1917. Public domain." src="assets/balfour_letter_1917.jpg" alt="A typed letter on Foreign Office paper, dated November 2nd, 1917, signed by Arthur James Balfour.">
+    <img class="plate" data-id="street" data-cap="David Street, inside the Jaffa Gate, Jerusalem, about 1920. Matson Collection, Library of Congress." src="assets/david_street_1920.jpg" loading="lazy" alt="A Jerusalem street around 1920: shop awnings, a horse cart, women in white veils walking past.">
+    <div class="cap"></div>
+  </div>
+  <div class="col gut">
+    <header class="opener" data-plate="letter" data-fx="50" data-fy="20" data-yr="1917">
+      <div class="num">The first of three papers</div>
+      <h2>A letter</h2>
+      <p class="where">London, 2 November 1917</p>
+    </header>
+
+    <article class="beat rv" data-plate="letter" data-fx="50" data-fy="22" data-fs="1" data-yr="1917">
+      <p>In 1917 Britain was at war with the Ottoman Empire, which had ruled Palestine for four hundred years. Five weeks before British troops took Jerusalem, the Foreign Secretary, Arthur Balfour, wrote to a leader of Britain’s Jews.</p>
+      <p>The promise in his letter is one sentence long. Thirty years of history came out of three of its phrases.</p>
+    </article>
+
+    <article class="beat rv" data-plate="letter" data-fx="45" data-fy="40" data-fs="1.5" data-yr="1917">
+      <p class="phrase">“a national home for the Jewish people”</p>
+      <p>Zionism was a movement, then twenty years old, which held that the Jews were a nation and needed a country of their own, in the land where their history began. Balfour’s letter put an empire behind it.</p>
+      <p>Look at the word he chose, though. He wrote <em>home</em>. He did not write <em>state</em>. For thirty years nobody could agree on what the difference was.</p>
+    </article>
+
+    <article class="beat rv" data-plate="street" data-fx="55" data-fy="55" data-fs="1.06" data-yr="1922">
+      <p class="phrase">“in Palestine”</p>
+      <p>Palestine was not empty. When the British counted its people in 1922 they found about 750,000. One in nine was a Jew. Nearly all the rest were Arabs, most of them Muslim and some Christian, and they had lived there for centuries.</p>
+    </article>
+
+    <article class="beat rv" data-plate="letter" data-fx="45" data-fy="54" data-fs="1.5" data-yr="1917">
+      <p class="phrase">“nothing shall be done which may prejudice the civil and religious rights of existing non-Jewish communities”</p>
+      <p>That is how the letter describes nine out of every ten people in Palestine: by what they are not. It promises them civil and religious rights, and says nothing of political ones.</p>
+      <p>Britain had made two promises in one sentence. It spent the next thirty years finding out that it could not keep both.</p>
+    </article>
+  </div>
+</section>
+
+<!-- II. THIRTY YEARS -->
+<section class="scene split flip" id="thirty" data-hue="34" data-sat="38">
+  <div class="stage">
+    <img class="plate" data-id="gate" data-cap="British soldiers at the Jaffa Gate, Jerusalem, April 1920. American Colony Photo Department, Library of Congress." src="assets/jaffa_gate_1920.jpg" loading="lazy" alt="British soldiers in an open car with a mounted machine gun beside the walls of Jerusalem.">
+    <img class="plate" data-id="revolt" data-cap="British troops parade through Jerusalem during the Arab revolt, 1936. Matson Collection, Library of Congress." src="assets/troops_1936.jpg" loading="lazy" alt="A column of British soldiers marching behind a band along the wall of Jerusalem's Old City.">
+    <img class="plate" data-id="paper" data-cap="Jews in Jerusalem protest the White Paper, 18 May 1939. Matson Photo Service, Library of Congress." src="assets/white_paper_protest_1939.jpg" loading="lazy" alt="A dense crowd of men filling a Jerusalem street in protest.">
+    <img class="plate" data-id="exodus" data-cap="The refugee ship Exodus 1947 in Haifa harbor, July 1947. Photo: Hans Pinn. Public domain." src="assets/exodus_haifa_1947.jpg" loading="lazy" alt="The battered side of a ship, its upper deck smashed, passengers crowded at every window and rail.">
+    <img class="plate" data-id="hotel" data-cap="The King David Hotel, Jerusalem, 22 July 1946. Photo: Gordon Trevor Moore, CC BY-SA 4.0." src="assets/king_david_1946.jpg" loading="lazy" alt="A large stone hotel with one wing collapsed into rubble.">
+    <div class="cap"></div>
+  </div>
+  <div class="col gut">
+    <header class="opener" data-plate="gate" data-fx="45" data-fy="55" data-yr="1920">
+      <div class="num">What the letter did</div>
+      <h2>Thirty years</h2>
+      <p class="where">Palestine, 1917 to 1947</p>
+    </header>
+
+    <article class="beat rv" data-plate="gate" data-fx="40" data-fy="60" data-fs="1.1" data-yr="1920s">
+      <p class="yr">1920s and 1930s</p>
+      <p class="big">The home is built.</p>
+      <p>The League of Nations gave Britain a <em>mandate</em>: govern Palestine, and build the Jewish national home there. Under British rule Jews came by the tens of thousands. They bought land, founded towns and farms, and built a government in waiting, with its own schools, labor unions and militia.</p>
+      <p>After Hitler took power in Germany in 1933 they came faster. By 1939 there were 450,000 of them, almost a third of the country.</p>
+    </article>
+
+    <article class="beat rv" data-plate="revolt" data-fx="45" data-fy="60" data-fs="1.08" data-yr="1936">
+      <p class="yr">1936</p>
+      <p class="big">The revolt.</p>
+      <p>Palestine’s Arabs watched a promised “home” turn into a state in the making, in a country they had expected to govern themselves. In 1936 they rose against British rule and against Jewish immigration.</p>
+      <p>It took Britain three years and a reinforced army to put the revolt down. Thousands of Arabs and hundreds of Jews were killed.</p>
+    </article>
+
+    <article class="beat rv" data-plate="paper" data-fx="50" data-fy="60" data-fs="1.08" data-yr="1939">
+      <p class="yr">May 1939</p>
+      <p class="big">The door closes.</p>
+      <p>Then Britain changed course. A war with Germany was coming, and it could not afford an Arab world in revolt. It limited Jewish immigration to 75,000 people over five years. After that, no more Jews could come unless the Arabs agreed.</p>
+      <p>Fifteen weeks later, Germany invaded Poland.</p>
+    </article>
+
+    <article class="beat rv" data-plate="exodus" data-fx="50" data-fy="35" data-fs="1.1" data-yr="1945">
+      <p class="yr">1945 to 1947</p>
+      <p class="big">The survivors.</p>
+      <p>Six million Jews were murdered in Europe. When the war ended, a quarter of a million Jewish refugees sat in camps in Germany, Austria and Italy with no homes to go back to. Britain kept its limit, and the Royal Navy stopped the ships that tried to carry them to Palestine.</p>
+      <p>In July 1947 the navy boarded one of them, the <em>Exodus</em>, killed three people on board, and sent its 4,500 passengers back to Germany.</p>
+    </article>
+
+    <article class="beat rv" data-plate="hotel" data-fx="60" data-fy="50" data-fs="1.08" data-yr="1947">
+      <p class="yr">1946 and 1947</p>
+      <p class="big">Britain gives up.</p>
+      <p>By then Jewish underground fighters were at war with the British as well. In 1946 they blew up British headquarters in Jerusalem’s King David Hotel and killed ninety-one people, British, Arab and Jewish.</p>
+      <p>Britain had 100,000 soldiers in Palestine, no money left after the war, and no policy that both peoples would accept. In February 1947 it handed the problem to the new United Nations. By autumn it had said it would leave.</p>
+    </article>
+  </div>
+</section>
+
+<section class="inter gut" data-hue="205" data-yr="1947">
+  <div>
+    <p class="hh rv">The United Nations drew a map.</p>
+  </div>
+</section>
+
+<!-- III. THE SECOND PAPER: A MAP -->
+<section class="scene split" id="map" data-hue="205">
+  <div class="stage">
+    <img class="plate color" data-id="map" data-cap="The UN plan of partition, Resolution 181, 29 November 1947, as drawn on United Nations Map No. 103.1(b), 1956. Blue-green: Jewish state. Orange: Arab state. White: Jerusalem." src="assets/un_partition_1947.jpg" loading="lazy" alt="The United Nations partition map of Palestine: a Jewish state in blue-green and an Arab state in orange, each in three pieces, with Jerusalem outlined in white in the middle.">
+    <img class="plate" data-id="wire" data-cap="Barbed wire and wire-mesh barriers on Jaffa Road, Jerusalem, 1947 to 1948. Harvard Library. Public domain." src="assets/riots_jaffa_road.jpg" loading="lazy" alt="A stone building and a corner shop behind tall wire fences and concrete cones on an empty Jerusalem street.">
+    <img class="plate color" data-id="statement" data-cap="Page 5 of Palestine: Termination of the Mandate, 15th May 1948. British Colonial Office and Foreign Office, London: HMSO, 1948. Public domain." src="assets/mandate_doc_p5.jpg" loading="lazy" alt="A page of the British government's printed account of the Mandate, with the headings The Jewish National Home and The Obstacles which Frustrated the Efforts of His Majesty's Government to Establish Self-Governing Institutions in Palestine.">
+    <div class="cap"></div>
+  </div>
+  <div class="col gut">
+    <header class="opener" data-plate="map" data-fx="50" data-fy="0" data-yr="1947">
+      <div class="num">The second of three papers</div>
+      <h2>A map</h2>
+      <p class="where">New York, 29 November 1947</p>
+    </header>
+
+    <article class="beat rv" data-plate="map" data-fx="50" data-fy="0" data-fs="1" data-yr="1947">
+      <p>The vote was 33 to 13, with ten abstentions. The United States and the Soviet Union, who agreed on almost nothing else that year, both voted yes.</p>
+      <p>The plan: two states, one Jewish and one Arab, and Jerusalem under UN rule. Britain had until August to leave. Both states were to exist by October 1948.</p>
+    </article>
+
+    <article class="beat rv" data-plate="map" data-fx="50" data-fy="24" data-fs="1" data-yr="1947">
+      <table class="annex">
+        <caption>What the plan gave each side</caption>
+        <thead><tr><th></th><th>Land</th><th>Jews</th><th>Arabs</th></tr></thead>
+        <tbody>
+          <tr><th><i class="sw j"></i>Jewish state</th><td>56%</td><td>498,000</td><td>325,000+</td></tr>
+          <tr><th><i class="sw a"></i>Arab state</th><td>43%</td><td>10,000</td><td>807,000</td></tr>
+          <tr><th><i class="sw l"></i>Jerusalem</th><td>UN rule</td><td>100,000</td><td>105,000</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="4">UN committee estimates. Counts of the Arabs inside the Jewish state run from 325,000 to about 407,000, depending on how the Negev Bedouin are counted.</td></tr></tfoot>
+      </table>
+    </article>
+
+    <article class="beat rv" data-plate="map" data-fx="50" data-fy="41" data-fs="1.35" data-yr="1947">
+      <p>The Jewish leadership said yes. Its state would come in pieces and would not include Jerusalem, but it would be a state.</p>
+      <p>The Arab leadership said no. Arabs were two thirds of the people of Palestine, they said, and the plan gave a Jewish third more than half the land. They said they would fight it.</p>
+    </article>
+
+    <article class="beat rv" data-plate="wire" data-fx="50" data-fy="50" data-fs="1" data-yr="1948">
+      <p>The fighting began the next day. By spring it was a civil war, with the British packing to leave.</p>
+      <p>In April Jewish irregulars killed about a hundred villagers at Deir Yassin. Four days later Arab gunmen killed seventy-eight Jews, many of them doctors and nurses, on the road to a Jerusalem hospital. Before the Arab armies had crossed a border, at least a quarter of a million Palestinians had fled or been driven from their homes.</p>
+      <p>Tomorrow those armies, from five countries, are expected to cross it.</p>
+    </article>
+
+    <article class="beat rv" data-plate="statement" data-fx="50" data-fy="62" data-fs="1" data-yr="1948">
+      <p>Six days ago the American Secretary of State told your foreign minister to postpone the state and accept a three-month truce. If the gamble failed, he said, do not expect rescue. On Wednesday your cabinet sat for thirteen hours and decided to go ahead.</p>
+      <p>Britain has printed its own account of the thirty years. It counts the farms, clinics and schools it built, and it blames its failure to set up self-government on “the mutual hostility of Arabs and Jews.” No UN commission has arrived to take over. Nobody is coming to hand you a country.</p>
+    </article>
+  </div>
+</section>
+
+<section class="inter gut" data-hue="98" data-sat="22" data-yr="1948">
+  <div>
+    <div class="lab">The third paper</div>
+    <p class="hh rv">There will be a Jewish state.<br>Nobody has agreed what kind.</p>
+  </div>
+</section>
+
+<!-- IV. THE THIRD PAPER: A DRAFT -->
+<section class="scene split flip" id="draft" data-hue="98" data-sat="22">
+  <div class="stage">
+    <div class="plate doc" data-id="draft" data-cap="Draft Declaration of Independence, 14 May 1948. Text as in the game.">
+      <div class="sheet">
+        <span class="stamp">Draft · not for publication</span>
+        <p class="hd">DRAFT DECLARATION OF INDEPENDENCE</p>
+        <p class="sub">For debate by the People’s Administration<br>14 May 1948</p>
+        <p>ERETZ-ISRAEL was the birthplace of the Jewish people. Here their spiritual, religious and political identity was shaped. Here they first attained to statehood and gave to the world the eternal Book of Books. After being forcibly exiled, the people kept faith throughout their Dispersion and never ceased to hope for their return and the restoration of their political freedom.</p>
+        <p>In the year 5657 (1897), Theodor Herzl convened the First Zionist Congress, which proclaimed the right of the Jewish people to national rebirth in its own country—a right recognized in the Balfour Declaration and re-affirmed by the League of Nations Mandate. The massacre of millions of Jews in Europe demonstrated the urgency of re-establishing the Jewish State. On 29 November 1947, the United Nations General Assembly passed a resolution calling for the establishment of a Jewish State in Eretz-Israel.</p>
+        <p>ACCORDINGLY WE, MEMBERS OF THE PEOPLE’S COUNCIL, ARE HERE ASSEMBLED ON THE DAY OF THE TERMINATION OF THE BRITISH MANDATE AND, BY VIRTUE OF OUR NATURAL AND HISTORIC RIGHT AND ON THE STRENGTH OF THE RESOLUTION OF THE UNITED NATIONS GENERAL ASSEMBLY, HEREBY <span class="blank" data-b="1">1 Statehood</span>.</p>
+        <p>THE STATE will be open for Jewish immigration and the Ingathering of the Exiles; it will be based on freedom, justice and peace as envisaged by the prophets of Israel; it will ensure complete equality of social and political rights to all its inhabitants irrespective of religion, race or sex; it will guarantee freedom of religion, conscience, language, education and culture; and it will be faithful to the principles of the Charter of the United Nations.</p>
+        <p>THE STATE <span class="blank" data-b="2">2 Borders</span>.</p>
+        <p>WE APPEAL to the United Nations to assist the Jewish people in building its State. <span class="hl" data-b="a">WE APPEAL to the Arab inhabitants of the State to preserve peace and participate in its upbuilding on the basis of full and equal citizenship.</span> WE EXTEND our hand to all neighbouring states in an offer of peace and good neighbourliness.</p>
+        <p>PLACING OUR TRUST IN <span class="blank" data-b="3">3 God</span>, WE AFFIX OUR SIGNATURES TO THIS PROCLAMATION AT THIS SESSION OF THE PROVISIONAL COUNCIL OF STATE, IN THE CITY OF TEL-AVIV, ON THIS SABBATH EVE, THE 5TH DAY OF IYAR, 5708 (14TH MAY, 1948).</p>
+        <p>The name of this State shall be: <span class="blank" data-b="4">4 Name</span></p>
+      </div>
+    </div>
+    <div class="cap"></div>
+  </div>
+  <div class="col gut">
+    <header class="opener" data-plate="draft" data-focus="top" data-blank="0" data-yr="1948">
+      <div class="num">The third of three papers</div>
+      <h2>A draft</h2>
+      <p class="where">Tel Aviv, Friday 14 May 1948</p>
+      <p class="after">This is the typed draft of the Declaration of Independence, as it lies on the cabinet table. Most of it is settled. Four blanks are not. Each blank is a fight, and each fight is over what kind of state this will be.</p>
+    </header>
+
+    <article class="beat rv" data-plate="draft" data-focus="1" data-blank="1" data-yr="1948">
+      <p class="kick">Blank 1 of 4 · Statehood</p>
+      <p class="big">Do you wait for the UN?</p>
+      <p>The draft says you act “on the strength of” the UN plan. It still needs a verb.</p>
+      <ul class="opts">
+        <li><p class="o">“…hereby declare the establishment of a Jewish state.”</p><p class="c">Independence now, on your own authority. The American colonies did exactly that in 1776. But Washington has just asked you to wait.</p></li>
+        <li><p class="o">“…hereby declare a provisional government in the framework of the UN.”</p><p class="c">A placeholder that keeps the UN and Washington on your side. But the UN’s timetable is already dead, and the armies are due tonight.</p></li>
+      </ul>
+      <p class="who"><b>At the table</b>Ben-Gurion, who chairs the cabinet, and Bentov want the first. Sharett and Rosen want the second.</p>
+    </article>
+
+    <article class="beat rv" data-plate="draft" data-focus="2" data-blank="2" data-yr="1948">
+      <p class="kick">Blank 2 of 4 · Borders</p>
+      <p class="big">Where does it end?</p>
+      <p>The UN drew a map. The draft can accept it, ignore it, or go past it.</p>
+      <ul class="opts">
+        <li><p class="o">“No mention of borders.”</p><p class="c">The American Declaration named none. The army decides where the state ends, and every option stays open.</p></li>
+        <li><p class="o">“…accepts the borders of UN Resolution 181.”</p><p class="c">The one map the world has agreed to. It also gives up Jerusalem and commits you to a state with a large Arab minority.</p></li>
+        <li><p class="o">“…claims sovereignty over Jerusalem.”</p><p class="c">The holiest city, with 100,000 Jews inside it, under siege. The UN’s plan for it exists only on paper.</p></li>
+        <li><p class="o">“…claims sovereignty over all of Eretz-Israel.”</p><p class="c">The Land of Israel, as the Bible has it. No map defines it, and every neighbor will read it as a threat.</p></li>
+      </ul>
+      <p class="who"><b>At the table</b>Remez wants no mention. Kaplan wants the UN lines, so the Arabs inside them know whether they are citizens. Shapira and Bernstein want Jerusalem named.</p>
+    </article>
+
+    <article class="beat rv" data-plate="draft" data-focus="a" data-blank="2" data-yr="1948">
+      <p class="kick">Not a blank</p>
+      <p class="phrase">“We appeal to the Arab inhabitants of the State to preserve peace and participate in its upbuilding on the basis of full and equal citizenship.”</p>
+      <p>Nobody at this table is Arab. The Arab leaders have refused the state. The people this line speaks to are leaving, or fighting, or about to become citizens of a country they did not choose, and the draft gives them no way to answer.</p>
+      <p>Your cabinet is not voting on this line. Read it anyway.</p>
+    </article>
+
+    <article class="beat rv" data-plate="draft" data-focus="3" data-blank="3" data-yr="1948">
+      <p class="kick">Blank 3 of 4 · God</p>
+      <p class="big">Who do you trust?</p>
+      <p>The last line has the signers place their trust in someone. What goes there says whether this is a state for a nation, a religion, or both.</p>
+      <ul class="opts">
+        <li><p class="o">“The Rock of Israel.”</p><p class="c">An old phrase from Hebrew prayer. A believer hears God. A secular socialist hears the strength of the Jewish people. It works because it means two things.</p></li>
+        <li><p class="o">“The Rock and Redeemer of Israel.”</p><p class="c">Unmistakably God. The religious ministers will sign gladly. The atheists will be asked to sign a prayer.</p></li>
+        <li><p class="o">Leave it out.</p><p class="c">A state that makes no claim about God. The religious ministers will say that is no Jewish state at all.</p></li>
+      </ul>
+      <p class="who"><b>At the table</b>Zisling, a kibbutz farmer and an atheist, wants it out. Sheetrit wants God named outright. Golda Meir, who has no vote, defends the middle.</p>
+    </article>
+
+    <article class="beat rv" data-plate="draft" data-focus="4" data-blank="4" data-yr="1948">
+      <p class="kick">Blank 4 of 4 · Name</p>
+      <p class="big">What is it called?</p>
+      <p>The draft ends with the name. It is the last blank, and the one most likely to be settled in a hurry.</p>
+      <ul class="opts">
+        <li><p class="o">“Israel.”</p><p class="c">The people’s old name. It ties the state to Jews everywhere, not only to those who live there.</p></li>
+        <li><p class="o">“Judea.”</p><p class="c">The ancient kingdom. But on the UN’s map, most of the old land of Judea lies outside the Jewish state.</p></li>
+        <li><p class="o">“Zion” or “Herzliya.”</p><p class="c">Names for the movement and for its founder, Theodor Herzl. They honor Zionism more than they describe a country.</p></li>
+        <li><p class="o">“Eretz-Israel.”</p><p class="c">The Land of Israel, all of it. A name that claims more than any border.</p></li>
+      </ul>
+      <p class="who"><b>Ask</b>Whatever you choose, ask who it leaves out. A state named for a people has to decide what to call everyone else.</p>
+    </article>
+  </div>
+</section>
+
+<!-- V. THE TABLE -->
+<section class="tablesec gut" id="table" data-hue="42" data-yr="1948" data-blank="4">
+  <div class="in">
+    <div class="lab rv">The table</div>
+    <h2 class="rv">Ten ministers.</h2>
+    <p class="intro rv">They belong to four parties, and the parties disagree about almost everything on that page. Golda Meir is in the room too, with a voice and no vote.</p>
+
+    <div class="cast">
+      <section class="party rv">
+        <h3>Labor</h3>
+        <ul>
+          <li><b>Ben-Gurion</b> · Prime Minister, Defense</li>
+          <li><b>Sharett</b> · Foreign Affairs</li>
+          <li><b>Kaplan</b> · Finance</li>
+          <li><b>Remez</b> · Transport</li>
+        </ul>
+        <p>Socialists who built the Jewish community’s farms, unions and militia. They run it.</p>
+      </section>
+      <section class="party rv">
+        <h3>Marxist</h3>
+        <ul>
+          <li><b>Zisling</b> · Agriculture</li>
+          <li><b>Bentov</b> · Labour and Construction</li>
+        </ul>
+        <p>Farther left. Kibbutz socialists, friendly to the Soviet Union and wary of religion in the state.</p>
+      </section>
+      <section class="party rv">
+        <h3>General Zionists</h3>
+        <ul>
+          <li><b>Rosen</b> · Justice</li>
+          <li><b>Bernstein</b> · Trade and Industry</li>
+        </ul>
+        <p>Liberal and middle-class. Lawyers and businessmen who want courts, contracts and friends in the West.</p>
+      </section>
+      <section class="party rv">
+        <h3>Religious</h3>
+        <ul>
+          <li><b>Shapira</b> · Health, Immigration</li>
+          <li><b>Sheetrit</b> · Police, Minorities</li>
+        </ul>
+        <p>A Jewish state must rest on Jewish tradition. Sheetrit also speaks for the Old Yishuv, the Jews who lived in the land long before Zionism began.</p>
+      </section>
+    </div>
+
+    <div class="rules">
+      <div class="rv">
+        <div class="lab">The cards</div>
+        <p>Every minister except Ben-Gurion holds one Obstruction card. Play it and all other business stops until your proposal gets a vote. Ben-Gurion holds the Hammer, which clears every Obstruction and forces a vote. Golda Meir holds the Compromise, which does the same with a middle-ground proposal.</p>
+      </div>
+      <div class="rv">
+        <div class="lab">The clock</div>
+        <p>The Sabbath begins at sundown, and the ceremony has to be over before it does. The British are gone at midnight. Nobody has promised you a minute more.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="midnight gut" id="midnight" data-night data-blank="4" data-yr="1948">
+  <div class="close">
+    <p class="rv">You have argued about this for months.</p>
+    <p class="rv">The arguing is over. Before sunset this cabinet has to put one text on the table and sign it.</p>
+    <p class="rv">Before midnight there will be a state of the Jewish people.</p>
+    <p class="rv last">What comes after that, no one at this table knows.</p>
+    <p class="go rv">Now read your role sheet.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="credits gut">
+  <p><a href="../index.html" style="color:inherit">← Back to the title page</a></p>
+  <div class="wrap">
+    <details>
+      <summary>Images and credits</summary>
+      <ol>
+        <li>All images from Wikimedia Commons. Photographs are shown in grayscale; the map and the British statement are shown in color.</li>
+        <li>Balfour Declaration, 1917 · UK Government · public domain</li>
+        <li>Four-mil stamp, 1927 · design by Fred Taylor for the Government of Palestine · public domain</li>
+        <li>Palestine pound, 1939 · Palestine Currency Board · public domain</li>
+        <li>Jerusalem photographs, 1920, 1936, 1939 · American Colony and Matson collections, Library of Congress · public domain</li>
+        <li>Exodus 1947 at Haifa · Hans Pinn · public domain</li>
+        <li>King David Hotel, 1946 · Gordon Trevor Moore · CC BY-SA 4.0</li>
+        <li>UN partition map · United Nations Map No. 103.1(b), February 1956, showing the plan of 1947 (A/RES/181) · public domain</li>
+        <li>Jaffa Road, Jerusalem, 1947 to 1948 · via Harvard Library · public domain</li>
+        <li>Palestine: Termination of the Mandate, 15th May 1948 · Colonial Office and Foreign Office, London: HMSO, 1948 · scan via the Internet Archive · public domain</li>
+        <li>Fonts: Libre Caslon, Cabin, Courier Prime, Amiri and Frank Ruhl Libre, all under the SIL Open Font License.</li>
+      </ol>
+    </details>
+    <details>
+      <summary>Sources for the numbers</summary>
+      <ol>
+        <li>1922 census: Government of Palestine, <em>Report and General Abstracts of the Census of 1922</em> (757,182 people; 83,794 Jews).</li>
+        <li>White Paper, May 1939 (Cmd. 6019): 75,000 immigrants over five years, then Arab consent; about 450,000 Jews, almost a third of the population.</li>
+        <li>Jewish displaced persons: about 250,000 by mid-1947, in Germany, Austria and Italy (US Holocaust Memorial Museum). Exodus 1947: about 4,500 passengers, three killed in the boarding.</li>
+        <li>King David Hotel, 22 July 1946: ninety-one killed. British troops in Palestine: about 100,000 at the peak (National Army Museum).</li>
+        <li>UN General Assembly Resolution 181 (II), 29 November 1947: vote 33 to 13 with 10 abstentions; terms and timetable; population estimates from the UN Ad Hoc Committee.</li>
+        <li>Deir Yassin, 9 April 1948: scholarship puts the dead at roughly 100 to 120. Hadassah convoy, 13 April 1948: 78 Jews killed. Palestinians who fled or were expelled before the Arab armies entered: at least 250,000 (Benny Morris, <em>The Birth of the Palestinian Refugee Problem Revisited</em>, 2004, estimates 250,000 to 300,000).</li>
+        <li>Marshall and Shertok (Sharett), 8 May 1948, and the People’s Administration meeting of 12 May: Martin Kramer, “The May 1948 Vote That Made the State of Israel,” <em>Mosaic</em>, 2018. The game folds the cabinet’s debates of 12 to 14 May into one sitting and keeps the game’s own clock.</li>
+      </ol>
+    </details>
+  </div>
+</footer>
+
+<script src="shared/engine.js"></script>
+</body>
+</html>

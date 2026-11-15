@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Before Midnight</title>
+<meta name="description" content="Friday, 14 May 1948. At midnight British rule in Palestine ends. Before sunset you must agree on the words that create a state. An introduction to the Reacting to the Past game Before Midnight.">
+<meta name="theme-color" content="#0d111b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23882a2c'/%3E%3Cpath d='M16 6v10' stroke='%23f0e6d0' stroke-width='3'/%3E%3Cpath d='M16 16V9' stroke='%23f0e6d0' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
+<style>
+:root {
+  --ground: hsl(224 32% 8%); --ink: hsl(40 30% 91%); --dim: hsl(40 12% 68%);
+  --rule: hsl(40 20% 80% / .28); --accent: hsl(357 64% 52%); --buff: hsl(42 34% 84%); --buff-ink: hsl(42 30% 10%);
+  --f-display: 'Libre Caslon Display','Libre Caslon Text','Big Caslon',Georgia,serif;
+  --f-body: 'Libre Caslon Text','Big Caslon',Georgia,serif;
+  --f-caps: 'Cabin','Gill Sans','Gill Sans MT','Trebuchet MS',sans-serif;
+}
+* { box-sizing: border-box; margin: 0; }
+html { background: var(--ground); }
+body { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  padding: 7vh 6vw; color: var(--ink); font-family: var(--f-body); line-height: 1.55; text-align: center; }
+.kick { font-family: var(--f-caps); font-weight: 600; font-size: .72rem; letter-spacing: .26em; text-transform: uppercase; color: var(--accent); }
+h1 { font-family: var(--f-display); font-weight: 400; font-size: clamp(3.4rem, 1.4rem + 9vw, 8.5rem); line-height: .95; margin: 1.2rem 0 1.4rem; letter-spacing: -.01em; }
+.when { font-family: var(--f-caps); font-weight: 500; font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); }
+.line { width: 3.5rem; height: 1px; background: var(--accent); margin: 2.4rem auto; }
+.lede { max-width: 33rem; margin-inline: auto; color: var(--dim); font-size: 1.08rem; }
+.pick { margin-top: 3.2rem; display: grid; grid-template-columns: repeat(2, minmax(0, 20rem)); gap: 1.4rem; justify-content: center; width: 100%; }
+.pick a { display: block; text-align: left; text-decoration: none; padding: 1.5rem 1.6rem 1.6rem; background: var(--buff); color: var(--buff-ink);
+  border-top: 3px solid hsl(357 64% 34%); transition: transform .25s ease, box-shadow .25s ease; }
+.pick a:hover, .pick a:focus-visible { transform: translateY(-4px); box-shadow: 0 14px 30px hsl(0 0% 0% / .45); outline: none; }
+.pick a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.pick .t { font-family: var(--f-caps); font-weight: 600; font-size: .7rem; letter-spacing: .22em; text-transform: uppercase; color: hsl(357 64% 34%); }
+.pick .n { display: block; font-family: var(--f-display); font-size: 2rem; line-height: 1.05; margin: .55rem 0 .7rem; }
+.pick .d { display: block; font-size: .95rem; line-height: 1.5; color: hsl(42 16% 24%); }
+.pick .go { display: block; margin-top: 1.1rem; font-family: var(--f-caps); font-weight: 600; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; }
+.fine { margin-top: 3rem; font-family: var(--f-caps); font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--dim); opacity: .8; }
+@media (max-width: 720px) { .pick { grid-template-columns: 1fr; max-width: 24rem; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="kick">A Reacting to the Past game</p>
+  <h1>Before Midnight</h1>
+  <p class="when">Tel Aviv · Friday 14 May 1948 · Sixteen hours to midnight</p>
+  <div class="line"></div>
+  <p class="lede">Before you read your role sheet, read this. Scroll through thirty years of history to the table where your cabinet has to agree on one text. Choose a length.</p>
+  <nav class="pick" aria-label="Choose a version">
+    <a href="shorter-introduction/index.html">
+      <span class="t">About five minutes</span>
+      <span class="n">Shorter introduction</span>
+      <span class="d">The letter, the thirty years in three beats, the UN map, and the four blanks in the draft.</span>
+      <span class="go">Begin →</span>
+    </a>
+    <a href="longer-introduction/index.html">
+      <span class="t">About nine minutes</span>
+      <span class="n">Longer introduction</span>
+      <span class="d">The full page: more on the Mandate and the revolt, the war, and the cabinet table, with who wants what.</span>
+      <span class="go">Begin →</span>
+    </a>
+  </nav>
+  <p class="fine">Giebfried &amp; Baram · Reacting to the Jewish Past</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,14 @@
+/* Self-hosted fonts for the Before Midnight intro. All are SIL Open Font License families, served from ./fonts/ (no network needed).
+   Libre Caslon (Text, Display): body and display. Cabin: tracked-capital labels (a Johnston/Gill cousin). Courier Prime: typed documents.
+   Amiri (Arabic) and Frank Ruhl Libre (Hebrew) are used only for the trilingual strip. */
+@font-face { font-family: 'Libre Caslon Text'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/libre-caslon-text-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Libre Caslon Text'; font-style: italic; font-weight: 400; font-display: swap; src: url('fonts/libre-caslon-text-latin-400-italic.woff2') format('woff2'); }
+@font-face { font-family: 'Libre Caslon Text'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/libre-caslon-text-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Libre Caslon Display'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Cabin'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/cabin-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Cabin'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/cabin-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Courier Prime'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/courier-prime-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Courier Prime'; font-style: italic; font-weight: 400; font-display: swap; src: url('fonts/courier-prime-latin-400-italic.woff2') format('woff2'); }
+@font-face { font-family: 'Courier Prime'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/courier-prime-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Amiri'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/amiri-arabic-400-normal.woff2') format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: 'Frank Ruhl Libre'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/frank-ruhl-libre-hebrew-500-normal.woff2') format('woff2'); unicode-range: U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
